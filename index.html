@@ -38,16 +38,16 @@
     .wrap {
       position: relative;
       z-index: 1;
-      width: min(1050px, 92%);
+      width: min(1050px, 90%);
       margin: auto;
-      padding: 45px 0 55px;
+      padding: 40px 0 50px;
     }
     .hero {
       text-align: center;
-      padding: 42px 20px 30px;
+      padding: 35px 20px;
       background: rgba(255,255,255,.62);
       border: 1px solid rgba(255,255,255,.9);
-      border-radius: 30px;
+      border-radius: 25px;
       box-shadow: 0 20px 60px rgba(54, 105, 145, .14);
       backdrop-filter: blur(10px);
     }
@@ -62,61 +62,69 @@
     }
     h1 {
       margin: 0;
-      font-size: clamp(34px, 7vw, 68px);
+      font-size: clamp(28px, 6vw, 56px);
       color: #285b7d;
     }
     .message {
-      font-size: clamp(20px, 3.5vw, 30px);
+      font-size: clamp(18px, 3.5vw, 26px);
       font-weight: 700;
-      margin: 16px auto 10px;
+      margin: 14px auto 10px;
       color: #315c77;
     }
     .sub {
       max-width: 680px;
       margin: auto;
-      line-height: 1.9;
+      line-height: 1.8;
       color: #587286;
-      font-size: 17px;
+      font-size: clamp(15px, 2.5vw, 17px);
     }
     .gallery-title {
       text-align: center;
-      margin: 50px 0 20px;
+      margin: 40px 0 20px;
       color: #285b7d;
-      font-size: 30px;
+      font-size: clamp(22px, 4vw, 30px);
     }
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 20px;
     }
     .card {
       background: white;
-      padding: 9px;
-      border-radius: 22px;
+      padding: 10px;
+      border-radius: 20px;
       box-shadow: 0 12px 35px rgba(50,90,120,.14);
       transition: transform .25s ease, box-shadow .25s ease;
     }
     .card:hover {
-      transform: translateY(-7px) rotate(-1deg);
+      transform: translateY(-5px) rotate(-1deg);
       box-shadow: 0 18px 45px rgba(50,90,120,.2);
     }
     .card img {
       display: block;
       width: 100%;
-      height: 420px;
+      height: 380px;
       object-fit: cover;
-      border-radius: 16px;
+      border-radius: 14px;
     }
     .footer {
       text-align: center;
       margin-top: 35px;
       color: #678295;
-      font-size: 15px;
+      font-size: 14px;
     }
-    @media (max-width: 750px) {
-      .gallery { grid-template-columns: 1fr; }
-      .card img { height: auto; max-height: 620px; }
-      .wrap { padding-top: 20px; }
+
+    /* التجاوب مع شاشات التابليت والموبايل */
+    @media (max-width: 900px) {
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .card img { height: 320px; }
+    }
+
+    @media (max-width: 600px) {
+      .wrap { width: 92%; padding: 20px 0 30px; }
+      .hero { padding: 25px 15px; border-radius: 20px; }
+      .gallery { grid-template-columns: 1fr; gap: 15px; }
+      .card img { height: 350px; } /* ارتفاع المناسب للموبايل */
     }
   </style>
 </head>
@@ -126,6 +134,7 @@
     <div class="heart">💙</div><div class="heart">🦋</div><div class="heart">💙</div>
   </div>
 
+  <!-- صوت الخلفية -->
   <audio id="bgAudio" loop autoplay>
     <source src="https://docs.google.com/uc?export=download&id=186Ly4ZzSzgeuhBg-qx1f9EIfyl-l1qPR" type="audio/mp3">
   </audio>
@@ -148,11 +157,10 @@
       <div class="card"><img src="https://lh3.googleusercontent.com/d/1810guQyHs3gWTTf5v5puQdk9EW0tjXvq" alt="صورة شمشومتي 3"></div>
     </section>
 
-    <div class="footer">Made with friendship & good vibes 💙✨</div>
+    <div class="footer">Made with friendship &amp; good vibes 💙✨</div>
   </main>
 
   <script>
-    // محاولة تشغيل الصوت تلقائياً أو مع أول لمسة/ضغطة في الصفحة بسبب قيود المتصفحات
     window.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('bgAudio');
       audio.play().catch(() => {
